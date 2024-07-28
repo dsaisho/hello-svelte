@@ -1,11 +1,31 @@
 <script>
-
+	import { signIn, signOut } from '@auth/sveltekit/client';
+	import { SignIn } from '@auth/sveltekit/components';
+	export let data;
 </script>
 
 <svelte:head>
 	<title>Home</title>
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
+<div>
+	<p>this is data from .env file loaded in .layout.server.js and received as 'data'</p>
+	secret:
+	{data.secret}
+	<br />
+	session:
+	<pre>{JSON.stringify(data?.session?.user,null,1) || 'no session'}</pre>
+</div>
+<div>
+	{#if data?.session?.user}
+		<button on:click={signOut}>sign out</button>
+	{:else}
+		<button on:click={() => signIn('google')}>sign in - client</button>
+		<SignIn provider='google'>
+			<span slot="submitButton">sign in - server</span>
+		</SignIn>
+	{/if}
+</div>
 
 
 <style>

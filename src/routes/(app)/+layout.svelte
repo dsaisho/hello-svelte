@@ -1,10 +1,11 @@
 <script>
 	import Header from './Header.svelte';
+	export let data;
+
 </script>
 
 <div class="app">
-	<Header />
-
+	<Header isSignedIn={!!data?.session?.user} />
 	<main>
 		<slot/>
 	</main>
