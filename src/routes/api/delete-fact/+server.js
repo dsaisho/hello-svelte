@@ -11,18 +11,12 @@ const connection = await mysql.createConnection({
 export const DELETE = async ({url}) => {
     const id = url.searchParams.get('id')
     const [results, fields] = await connection.query(
-    'DELETE FROM Facts where id = ?',[]
+    'DELETE FROM Facts where id = ?',[id]
     );
-    const formatted = results.map(result => {
-        return {
-            id: result.id,
-            text: result.fact,
-            
-        }
-    });
-    console.log(formatted); // results contains rows returned by server
+
+    console.log(results); // results contains rows returned by server
     console.log(fields); // fields contains extra meta data about results, if available
 //    return new Response(results,{headers: { 'Content-Type': 'application/json' }});
     //return new Response('hi')
-    return new Response(JSON.stringify(formatted));
+    return new Response(JSON.stringify(results));
 }

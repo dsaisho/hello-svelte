@@ -16,7 +16,7 @@
 
 			<li>
 		
-				<a href="/facts">Word Circle</a>
+				<a href="/facts">Facts Stuff</a>
 			</li>
 
 		</ul>
