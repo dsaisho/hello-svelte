@@ -10,7 +10,7 @@ const connection = await mysql.createConnection({
 
 export const GET = async () => {
     const [results, fields] = await connection.query(
-    'SELECT * FROM Facts'
+    'SELECT * FROM facts'
     );
     const formatted = results.map(result => {
         return {
@@ -19,9 +19,5 @@ export const GET = async () => {
             
         }
     });
-    console.log(formatted); // results contains rows returned by server
-    console.log(fields); // fields contains extra meta data about results, if available
-//    return new Response(results,{headers: { 'Content-Type': 'application/json' }});
-    //return new Response('hi')
     return new Response(JSON.stringify(formatted));
 }

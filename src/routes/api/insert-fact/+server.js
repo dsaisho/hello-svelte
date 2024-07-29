@@ -16,12 +16,12 @@ export const GET = async ({url}) => {
         if(!fact) return new Response('Please provide a fact', {status: 400});
 
         const [checkResult] = await connection.query(
-            `SELECT * from Facts where fact = ?`, [fact]
+            `SELECT * from facts where fact = ?`, [fact]
         );
         if(checkResult.length > 0) return new Response('Fact already exists', {status: 409});
 
         const [insertResult] = await connection.query(
-            'INSERT INTO Facts (fact) VALUES (?)', [fact]
+            'INSERT INTO facts (fact) VALUES (?)', [fact]
         );
         console.log('Row insert Id:',insertResult.insertId); // results contains rows returned by server
 
