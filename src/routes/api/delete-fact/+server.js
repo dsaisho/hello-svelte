@@ -11,7 +11,7 @@ const connection = await mysql.createConnection({
 export const DELETE = async ({url}) => {
     const id = url.searchParams.get('id')
     const [results, fields] = await connection.query(
-    'DELETE FROM Facts where id = ?',[id]
+    'DELETE FROM facts where id = ?',[id]
     );
 
     console.log(results); // results contains rows returned by server

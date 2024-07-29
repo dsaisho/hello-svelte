@@ -14,7 +14,7 @@
 	{data.secret}
 	<br />
 	session:
-	<pre>{JSON.stringify(data?.session?.user,null,1) || 'no session'}</pre>
+	<pre>{JSON.stringify(data,null,1) || 'no session'}</pre>
 </div>
 <div>
 	{#if data?.session?.user}
