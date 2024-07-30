@@ -5,6 +5,7 @@ import {
 	mysqlTable,
 	primaryKey,
 	varchar,
+	longtext
   } from "drizzle-orm/mysql-core"
   import mysql from "mysql2"
   import { drizzle } from "drizzle-orm/mysql2"
@@ -17,9 +18,18 @@ import {
   })
    
   export const db = drizzle(connection)
+
   export const facts = mysqlTable("facts", {
 	id: int("id").notNull().autoincrement().primaryKey(),
 	fact: varchar("fact", { length: 700 }),
+  })
+
+  export const userContent = mysqlTable("usercontent", {
+	id: int("id").notNull().autoincrement().primaryKey(),
+	content: longtext("content"),
+	userid: int("userid").notNull(),
+	desc:varchar("desc",{length:255}),
+	date: timestamp("date", { mode: "date" }).notNull()
   })
 
   export const users = mysqlTable("user", {

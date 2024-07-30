@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "mysql",
-  "id": "e274a91a-b0c3-4fca-bcc0-9ff607b3b737",
+  "id": "d315546a-aafd-416d-84dc-4cb3d2d64c0d",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account": {
@@ -282,6 +282,57 @@
           "name": "session_sessionToken",
           "columns": [
             "sessionToken"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "usercontent": {
+      "name": "usercontent",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": true
+        },
+        "content": {
+          "name": "content",
+          "type": "longtext",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "userid": {
+          "name": "userid",
+          "type": "int",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "desc": {
+          "name": "desc",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "date": {
+          "name": "date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {
+        "usercontent_id": {
+          "name": "usercontent_id",
+          "columns": [
+            "id"
           ]
         }
       },

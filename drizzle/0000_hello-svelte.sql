@@ -39,6 +39,15 @@ CREATE TABLE `session` (
 	CONSTRAINT `session_sessionToken` PRIMARY KEY(`sessionToken`)
 );
 --> statement-breakpoint
+CREATE TABLE `usercontent` (
+	`id` int AUTO_INCREMENT NOT NULL,
+	`content` longtext,
+	`userid` int NOT NULL,
+	`desc` varchar(255),
+	`date` timestamp NOT NULL,
+	CONSTRAINT `usercontent_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
 CREATE TABLE `user` (
 	`id` varchar(255) NOT NULL,
 	`name` varchar(255),
