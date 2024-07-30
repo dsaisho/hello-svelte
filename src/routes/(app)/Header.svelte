@@ -54,17 +54,10 @@
 	}
 	.child {
 		display: none;
+		margin-top:25px;
 	}
 	li:hover .child {
 		display: block;
 	}
-	.child li {
-		background-color: rgba(40, 21, 4, 0.5);
-	}
-	.child li:hover {
-		background-color: rgba(40, 21, 4, 0.8);
-	}
-	.child li a {
-		color: rgb(166, 161, 161);
-	}
+
 </style>

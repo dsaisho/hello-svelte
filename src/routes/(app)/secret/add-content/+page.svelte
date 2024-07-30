@@ -6,12 +6,25 @@
 	import List from '@editorjs/list';
 
 	let editor;
-	const edjsParser = editjsHTML();
 	let html = '';
+  let editorOutput = {};
+  
+	const edjsParser = editjsHTML();
+
+  $: hasOutput = editorOutput?.blocks?.length > 0
+
+
+  const saveContent = async ()=>{
+    const outputData = await editor.save();
+    console.log('outputData ', outputData);
+  }
+
+
 	const changed = () => {
 		editor
 			.save()
 			.then((outputData) => {
+        editorOutput = outputData;
 				html = edjsParser.parse(outputData).join(' ');
 				console.log('html ', html);
 			})
@@ -19,10 +32,12 @@
 				console.log('Saving failed: ', error);
 			});
 	};
+
 	onMount(async () => {
 		let Image = await import('@editorjs/image');
 		let EditorJS = await import('@editorjs/editorjs');
 		editor = new EditorJS.default({
+			placeholder: 'Start typing your content here...',
 			tools: {
 				header: {
 					class: Header,
@@ -51,7 +66,46 @@
 	});
 </script>
 
-<div>
-	{@html html}
+<div class="wrapper">
+	<div class="preview">
+		{@html html}
+	</div>
 </div>
-<div id="editorjs"></div>
+<h1 class="center">Create your own content</h1>
+<div class="editor-wrapper">
+	<div id="editorjs"></div>
+</div>
+<button class="{hasOutput ? '':'disabled'}" on:click={saveContent}>Save Content</button>
+<style>
+	.wrapper {
+		background-color: rgb(212, 212, 212);
+		max-width: 650px;
+		padding: 10px;
+		margin: 0;
+		display: flex;
+		& img {
+			max-width: 50%;
+		}
+	}
+  .editor-wrapper{
+    & #editorjs{
+      max-width:650px;
+      border:black solid thin;
+      padding: 6px;
+    }
+  }
+
+  button{
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    cursor: pointer;
+    width:fit-content;
+    &.disabled{
+      background-color: grey;
+      cursor: not-allowed;
+    }
+  }
+</style>
