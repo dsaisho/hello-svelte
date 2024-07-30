@@ -29,9 +29,14 @@
 	"dependencies": {
 		"@auth/drizzle-adapter": "^1.4.2",
 		"@auth/sveltekit": "^1.4.2",
+		"@editorjs/editorjs": "^2.30.2",
+		"@editorjs/header": "^2.8.7",
+		"@editorjs/image": "^2.9.2",
+		"@editorjs/list": "^1.10.0",
 		"dotenv": "^16.4.5",
 		"drizzle-orm": "^0.32.1",
-		"mysql": "^2.18.1",
-		"mysql2": "^3.10.3"
+		"editorjs-html": "^3.4.3",
+		"mysql2": "^3.10.3",
+		"sveditorjs": "^2.0.1"
 	}
 }
