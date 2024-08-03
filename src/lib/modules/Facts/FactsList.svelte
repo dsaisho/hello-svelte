@@ -16,13 +16,12 @@
 			method: 'DELETE'
 		});
 		listData = listData.filter((fact) => fact.id !== id);
-        //listData = [...listData];
 	};
 </script>
 
 <h2 class="center">Saved Facts {listData.length}</h2>
 <div class="fact-list">
-	{#each listData as fact}
+	{#each listData as fact (fact.id)}
 		<Fact {fact} hideSave={true} on:delete={() => deleteFact(fact.id)} />
 	{/each}
 </div>

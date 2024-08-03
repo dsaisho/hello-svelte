@@ -26,9 +26,9 @@ import {
 
   export const userContent = mysqlTable("usercontent", {
 	id: int("id").notNull().autoincrement().primaryKey(),
-	content: longtext("content"),
-	userid: int("userid").notNull(),
-	desc:varchar("desc",{length:255}),
+	content: longtext("content").notNull(),
+	userid: varchar("userid",{length:255}).notNull(),
+	description:varchar("description",{length:255}).notNull(),
 	date: timestamp("date", { mode: "date" }).notNull()
   })
 
