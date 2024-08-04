@@ -8,6 +8,7 @@ export const { handle, signIn } = SvelteKitAuth({
   config: {
     trustHost: true,
   },
+  trustHost: true,
   providers: [Google({
     authorization: {
       params: {
