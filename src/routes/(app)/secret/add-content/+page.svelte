@@ -5,6 +5,7 @@
 	//import EditorJS from '@editorjs/editorjs';
 	import Header from '@editorjs/header';
 	import List from '@editorjs/list';
+	import { page } from '$app/stores';
 
 	let editor;
 	let html = '';
@@ -16,13 +17,14 @@
 	const edjsParser = editjsHTML();
 
 	$: hasOutput = editorOutput?.blocks?.length > 0;
+	$: baseUrl = `${$page.url.protocol}//${$page.url.host}`;
 
 	function createDescFromBody(text) {
 		if (typeof text !== 'string') {
 			return '';
 		}
 		// Flatten the text by replacing newlines with spaces
-		const flattenedText = text.replace(/\n/g, ' ').replace('Text Heading List Image','');
+		const flattenedText = text.replace(/\n/g, ' ').replace('Text Heading List Image', '');
 		return flattenedText.slice(0, 100);
 	}
 
@@ -77,8 +79,8 @@
 					class: Image.default,
 					config: {
 						endpoints: {
-							byFile: 'http://localhost:5173/api/upload-image', // Your backend file uploader endpoint
-							byUrl: 'http://localhost:3000/fetchUrl' // Your endpoint that provides uploading by Url
+							byFile: '/api/upload-image', // Your backend file uploader endpoint
+							byUrl: '/api/upload-image?url=1' // Your endpoint that provides uploading by Url
 						}
 					}
 				}
