@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-
+import { dev } from '$app/environment';
 
 export const POST = async ({ request }) => {
   const formData = await request.formData();
@@ -9,7 +9,7 @@ export const POST = async ({ request }) => {
   let filePath = '';
 
   if (file && file instanceof File) {
-    const uploadDir = 'static/uploads';
+    const uploadDir = dev ? 'static/uploads' : 'uploads';
     const uploadPath = path.join(uploadDir, file.name);
 
     if (!fs.existsSync(uploadDir)) {
