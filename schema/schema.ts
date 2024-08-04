@@ -5,21 +5,36 @@ import {
 	mysqlTable,
 	primaryKey,
 	varchar,
+	longtext
   } from "drizzle-orm/mysql-core"
   import mysql from "mysql2"
   import { drizzle } from "drizzle-orm/mysql2"
 
-  export const connection = mysql.createConnection({
-	host: "127.0.0.1",
-	user: "user",
-	password: "password",
-	database: "facts_db",
+//   export const connection = mysql.createConnection({
+// 	host: "127.0.0.1",
+// 	user: "user",
+// 	password: "password",
+// 	database: "facts_db",
+//   })
+export const connection = mysql.createConnection({
+	host: "50.87.150.19",
+	user: "mistersa",
+	password: "Fuckyou1.",
+	database: "mistersa_hello_svelte",
   })
-   
   export const db = drizzle(connection)
+
   export const facts = mysqlTable("facts", {
 	id: int("id").notNull().autoincrement().primaryKey(),
 	fact: varchar("fact", { length: 700 }),
+  })
+
+  export const userContent = mysqlTable("usercontent", {
+	id: int("id").notNull().autoincrement().primaryKey(),
+	content: longtext("content").notNull(),
+	userid: varchar("userid",{length:255}).notNull(),
+	description:varchar("description",{length:255}).notNull(),
+	date: timestamp("date", { mode: "date" }).notNull()
   })
 
   export const users = mysqlTable("user", {

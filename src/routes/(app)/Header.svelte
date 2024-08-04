@@ -20,6 +20,9 @@
 					<!-- make nested list with this as parent-->
 					<ul class="child">
 						<li>
+							<a href="/secret/view-content">view content</a>
+						</li>
+						<li>
 							<a href="/secret/add-content">add content</a>
 						</li>
 					</ul>
@@ -43,8 +46,8 @@
 		list-style-type: none;
 		display: inline-block;
 		& a {
-			padding: 10px;
 			background-color: rgba(40, 21, 4, 0.5);
+			padding: 10px;
 			margin: 0 3px;
 			cursor: pointer;
 			text-decoration: none;
@@ -55,6 +58,11 @@
 	.child {
 		display: none;
 		margin-top:25px;
+		padding:0px;		
+		& a{
+			background-color: rgba(54, 6, 6, 0.5);
+		}
+		
 	}
 	li:hover .child {
 		display: block;

@@ -1,12 +1,6 @@
-import mysql from 'mysql2/promise';
-
+import Connection from '$lib/server/dbConnection';
 // Create the connection to database
-const connection = await mysql.createConnection({
-  host: '127.0.0.1',
-  user: 'user',
-  password:'password',
-  database: 'facts_db',
-});
+const connection = await Connection()
 
 // A simple SELECT query
 
