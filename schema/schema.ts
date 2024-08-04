@@ -10,13 +10,18 @@ import {
   import mysql from "mysql2"
   import { drizzle } from "drizzle-orm/mysql2"
 
-  export const connection = mysql.createConnection({
-	host: "127.0.0.1",
-	user: "user",
-	password: "password",
-	database: "facts_db",
+//   export const connection = mysql.createConnection({
+// 	host: "127.0.0.1",
+// 	user: "user",
+// 	password: "password",
+// 	database: "facts_db",
+//   })
+export const connection = mysql.createConnection({
+	host: "50.87.150.19",
+	user: "mistersa",
+	password: "Fuckyou1.",
+	database: "mistersa_hello_svelte",
   })
-   
   export const db = drizzle(connection)
 
   export const facts = mysqlTable("facts", {

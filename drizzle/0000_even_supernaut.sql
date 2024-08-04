@@ -41,9 +41,9 @@ CREATE TABLE `session` (
 --> statement-breakpoint
 CREATE TABLE `usercontent` (
 	`id` int AUTO_INCREMENT NOT NULL,
-	`content` longtext,
-	`userid` int NOT NULL,
-	`desc` varchar(255),
+	`content` longtext NOT NULL,
+	`userid` varchar(255) NOT NULL,
+	`description` varchar(255) NOT NULL,
 	`date` timestamp NOT NULL,
 	CONSTRAINT `usercontent_id` PRIMARY KEY(`id`)
 );

@@ -4,10 +4,9 @@ export default defineConfig({
   out: "./drizzle",
   dialect: 'mysql',
   dbCredentials: {
-    user: "user",
-    password: "password",
-    host: "127.0.0.1",
-    port: 3306,
-    database: "facts_db",
+    user: "mistersa",
+    password: "Fuckyou1.",
+    host: "50.87.150.19",
+    database: "mistersa_hello_svelte",
   }
 });
