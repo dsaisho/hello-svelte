@@ -64,9 +64,9 @@ export async function uploadToLocal(uploadDir, file){
 function initLocalMediaDir(tempMediaDir) {
     const mediaDirExists = fs.existsSync(tempMediaDir)
     if (!mediaDirExists) {
-        fs.mkdirSync(tempMediaDir);
+        fs.mkdirSync(tempMediaDir,{recursie:true});
     } else {
-        deleteLocalMediaContents()
+        deleteLocalMediaContents(tempMediaDir)
     }
 }
 
