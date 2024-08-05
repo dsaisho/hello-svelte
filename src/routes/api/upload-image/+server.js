@@ -19,7 +19,7 @@ export const POST = async ({ request }) => {
   //       "width": 200
   //     }}));
 
-    const uploadDir = dev ? 'static/uploads' : '/uploads';
+    const uploadDir = dev ? 'static/uploads' : '/app/uploads';
     const uploadPath = path.join(uploadDir, file.name);
 
     if (!fs.existsSync(uploadDir)) {
