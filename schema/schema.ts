@@ -16,7 +16,7 @@ import {
 // 	password: "password",
 // 	database: "facts_db",
 //   })
-export const connection = mysql.createConnection({
+export const connection = mysql.createPool({
 	host: "50.87.150.19",
 	user: "mistersa",
 	password: "Fuckyou1.",

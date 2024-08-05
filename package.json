@@ -7,7 +7,7 @@
 		"preview": "vite preview",
 		"lint": "prettier --check . && eslint .",
 		"format": "prettier --write .",
-		"start":"dotenv -- node build"
+		"start": "dotenv -- node build"
 	},
 	"devDependencies": {
 		"@fontsource/fira-mono": "^4.5.10",
@@ -34,6 +34,7 @@
 		"@editorjs/header": "^2.8.7",
 		"@editorjs/image": "^2.9.2",
 		"@editorjs/list": "^1.10.0",
+		"@google-cloud/storage": "^7.12.0",
 		"@sveltejs/adapter-node": "^5.2.0",
 		"dotenv": "^16.4.5",
 		"dotenv-cli": "^7.4.2",
