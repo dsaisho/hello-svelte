@@ -11,15 +11,15 @@ export const POST = async ({ request }) => {
   let filePath = '';
 
   if (file && file instanceof File) {
-   const url =  await uploadImageByBuffer(file);
-    return new Response(JSON.stringify({
-      "success": 1,
-      "file": {
-        "url": url,
-        "width": 200
-      }}));
+  //  const url =  await uploadImageByBuffer(file);
+  //   return new Response(JSON.stringify({
+  //     "success": 1,
+  //     "file": {
+  //       "url": url,
+  //       "width": 200
+  //     }}));
 
-    const uploadDir = dev ? 'static/uploads' : 'uploads';
+    const uploadDir = dev ? 'static/uploads' : 'build/uploads';
     const uploadPath = path.join(uploadDir, file.name);
 
     if (!fs.existsSync(uploadDir)) {
