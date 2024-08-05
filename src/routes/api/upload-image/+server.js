@@ -19,13 +19,13 @@ export const POST = async ({ request }) => {
   //       "width": 200
   //     }}));
 
-    const uploadDir = dev ? 'static/uploads' : 'tmp/uploads';
+    const uploadDir = dev ? 'static/uploads' : '/tmp/uploads';
     const uploadPath = path.join(uploadDir, file.name);
 
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
-
+    console.log("DOING UPLOAD", uploadPath)
     const fileStream = fs.createWriteStream(uploadPath);
     fileStream.write(Buffer.from(await file.arrayBuffer()));
     fileStream.end();
