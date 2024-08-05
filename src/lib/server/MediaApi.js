@@ -49,7 +49,19 @@ export async function uploadImageByBuffer(file) {
     });
 }
 
-function initLocalMediaDir() {
+export async function uploadToLocal(uploadDir, file){
+    const uploadPath = path.join(uploadDir, file.name);
+
+    initLocalMediaDir(uploadDir);
+
+    const fileStream = fs.createWriteStream(uploadPath);
+    fileStream.write(Buffer.from(await file.arrayBuffer()));
+    fileStream.end();
+
+    return path.join(uploadDir, file.name);
+}
+
+function initLocalMediaDir(tempMediaDir) {
     const mediaDirExists = fs.existsSync(tempMediaDir)
     if (!mediaDirExists) {
         fs.mkdirSync(tempMediaDir);
@@ -58,7 +70,7 @@ function initLocalMediaDir() {
     }
 }
 
-function deleteLocalMediaContents() {
+function deleteLocalMediaContents(tempMediaDir) {
     const fileObjs = fs.readdirSync(tempMediaDir)
     for (const file of fileObjs) {
         fs.unlinkSync(path.join(tempMediaDir, file), err => {

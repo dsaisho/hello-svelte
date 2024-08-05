@@ -1,13 +1,13 @@
 import fs from 'fs';
 import path from 'path';
 import { dev } from '$app/environment';
-import { uploadImageByBuffer,uploadImage } from '$lib/server/MediaApi';
+import { uploadToLocal,uploadImage } from '$lib/server/MediaApi';
 
 export const POST = async ({ request }) => {
   
   const formData = await request.formData();
-
   const file = formData.get('image');
+
   let filePath = '';
 
   if (file && file instanceof File) {
@@ -20,20 +20,8 @@ export const POST = async ({ request }) => {
   //     }}));
 
     const uploadDir = dev ? 'static/uploads' : '/app/uploads';
-    const uploadPath = path.join(uploadDir, file.name);
-
-    if (!fs.existsSync(uploadDir)) {
-      console.log("MAKING DIR")
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    console.log("DOING UPLOAD", uploadPath)
-    const fileStream = fs.createWriteStream(uploadPath);
-    fileStream.write(Buffer.from(await file.arrayBuffer()));
-    fileStream.end();
-    filePath = path.join('/app/uploads', file.name);
-    console.log('isdev',dev)
-    const url = uploadImage(filePath)
-    console.log('url',url)
+    const localFilePath = await uploadToLocal(uploadDir,file);
+    filePath = uploadImage(localFilePath)
   }
   return new Response(JSON.stringify({
     "success": 1,
