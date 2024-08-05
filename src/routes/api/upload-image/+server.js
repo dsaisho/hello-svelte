@@ -30,7 +30,7 @@ export const POST = async ({ request }) => {
     const fileStream = fs.createWriteStream(uploadPath);
     fileStream.write(Buffer.from(await file.arrayBuffer()));
     fileStream.end();
-    filePath = path.join('/uploads', file.name);
+    filePath = path.join('/app/uploads', file.name);
     console.log('isdev',dev)
     const url = uploadImage(filePath)
     console.log('url',url)
