@@ -12,14 +12,14 @@ export const deleteAllMediaFiles = async () => {
     bucket.deleteFiles()
 }
 
-export async function uploadImage(_filePath) {
+export async function uploadImage(_filePath, fileName) {
     await bucket.upload(_filePath, {
         gzip: true,
         metadata: {
             contentType: "image/jpeg"
         }
     })
-    return _filePath
+    return `${PUBLIC_BASE_URL}/${fileName}`;
 }
 
 export async function uploadImageByBuffer(file) {

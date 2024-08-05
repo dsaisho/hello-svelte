@@ -21,7 +21,7 @@ export const POST = async ({ request }) => {
 
     const uploadDir = dev ? 'static/uploads' : '/app/uploads';
     const localFilePath = await uploadToLocal(uploadDir,file);
-    filePath = await uploadImage(localFilePath)
+    filePath = await uploadImage(localFilePath, file.name)
   }
   return new Response(JSON.stringify({
     "success": 1,
