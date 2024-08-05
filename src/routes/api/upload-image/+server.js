@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { dev } from '$app/environment';
-import { uploadImageByBuffer } from '$lib/server/MediaApi';
+import { uploadImageByBuffer,uploadImage } from '$lib/server/MediaApi';
 
 export const POST = async ({ request }) => {
   
@@ -19,7 +19,7 @@ export const POST = async ({ request }) => {
   //       "width": 200
   //     }}));
 
-    const uploadDir = dev ? 'static/uploads' : '/app/uploads';
+    const uploadDir = dev ? 'static/uploads' : '/uploads';
     const uploadPath = path.join(uploadDir, file.name);
 
     if (!fs.existsSync(uploadDir)) {
@@ -32,6 +32,8 @@ export const POST = async ({ request }) => {
     fileStream.end();
     filePath = path.join('/uploads', file.name);
     console.log('isdev',dev)
+    const url = uploadImage(filePath)
+    console.log('url',url)
   }
   return new Response(JSON.stringify({
     "success": 1,
