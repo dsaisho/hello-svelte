@@ -30,6 +30,7 @@ export const POST = async ({ request }) => {
     fileStream.write(Buffer.from(await file.arrayBuffer()));
     fileStream.end();
     filePath = path.join('/uploads', file.name);
+    console.log('isdev',dev)
   }
   return new Response(JSON.stringify({
     "success": 1,
