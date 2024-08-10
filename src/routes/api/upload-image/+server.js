@@ -13,7 +13,7 @@ export const POST = async ({ request }) => {
     const uploadDir = dev ? `./static/${UPLOAD_DIR}/` : `/app/${UPLOAD_DIR}`;
     const localFilePath = await uploadToLocal(uploadDir,file);
     filePath = await uploadImage(localFilePath, file.name)
-    // upload directly to google cloud:
+    // Upload directly to google cloud:
     // filepath =  await uploadImageByBuffer(file);
   }
   return new Response(JSON.stringify({
