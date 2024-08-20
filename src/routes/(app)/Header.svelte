@@ -13,6 +13,9 @@
 			<li>
 				<a href="/facts">Facts Stuff</a>
 			</li>
+			<li>
+				<a href="/globe">Globe</a>
+			</li>
 
 			{#if isSignedIn}
 				<li>
