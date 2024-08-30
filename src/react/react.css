@@ -1,0 +1,9 @@
+.react-component{
+    width:300px;
+    height:300px;
+    border:black solid thin;
+    padding:10px;
+}
+b{
+    cursor:pointer;
+}
